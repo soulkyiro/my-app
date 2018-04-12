@@ -5,7 +5,7 @@ export default class Timer extends Component{
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	date: new Date().toLocaleTimeString()
+	    	date: 0
 	    };
 	}
 
@@ -14,7 +14,6 @@ export default class Timer extends Component{
 			this.setState({date: new Date().toLocaleTimeString()})
 		},1000 )
 	}
-
 
 	render(){
 		return(

@@ -11,33 +11,28 @@ export default class Operation extends Component{
 	    	result: 0,
 		};
 
-	    this.handleChangeFirstNumber = this.handleChangeFirstNumber.bind(this);
-	    this.handleChangeSecondNumber = this.handleChangeSecondNumber.bind(this);
-	    this.handleSubmit = this.handleSubmit.bind(this);
-	    this.handleChangeOperation = this.handleChangeOperation.bind(this);
 	  }
-
-	    handleSubmit(event) {
-	    	this.state.result = 0;
-	    	if(this.state.op == "add"){
-    			this.state.result = parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber);
+	  handleSubmit = (event) => {
+	  	if(this.state.op == "add"){
+	    		this.setState({result: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber)})
 	    	}
 	    	else{
-	    		this.state.result = parseInt(this.state.firstNumber) * parseInt(this.state.secondNumber);
+	    		this.setState({result: parseInt(this.state.firstNumber) * parseInt(this.state.secondNumber)})
 	    	}
 
-		    alert('El resultado es: ' + this.state.result);
+//		    alert('El resultado es: ' + this.state.result);
 		    event.preventDefault();
-	  	}	
+	  }
 
-  	  	handleChangeOperation(event) {
+  	  	handleChangeOperation = (event) => {
 			this.setState({op: event.target.value});
   		}
 
-  		handleChangeFirstNumber(event) {
+  		handleChangeFirstNumber = (event) => {
 			this.setState({firstNumber: event.target.value});
   		}
-  		handleChangeSecondNumber(event) {
+
+  		handleChangeSecondNumber = (event) => {
 			this.setState({secondNumber: event.target.value});
   		}
 
@@ -45,7 +40,7 @@ export default class Operation extends Component{
 		return(
 			<div>
 				<h1>Operaciones</h1>
-
+				<p>{this.state.result} </p>
 				<form onSubmit={this.handleSubmit}>
 			        <select value={this.state.op} onChange={this.handleChangeOperation}>
 			            <option value="add">Suma</option>
